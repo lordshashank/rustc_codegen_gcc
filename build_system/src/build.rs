@@ -33,7 +33,7 @@ impl BuildArg {
                     }
                 }
                 "--sysroot" => {
-                    build_arg.build_sysroot = true; // Set the flag when --sysroot is encountered
+                    build_arg.build_sysroot = true;
                 }
                 "--help" => {
                     Self::usage();
@@ -211,7 +211,6 @@ fn build_codegen(args: &mut BuildArg) -> Result<(), String> {
     let gccjit_target = "target/out/gccjit";
     create_dir(gccjit_target)?;
     if args.build_sysroot {
-        // Only call build_sysroot if the flag is set
         println!("[BUILD] sysroot");
         build_sysroot(&env, &args.config_info)?;
     }
